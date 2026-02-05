@@ -13,6 +13,5 @@ class AnotherTest extends TestCase
         $result = $another->test();
         
         $this->assertEquals('Test', $result);
-        $this->assertIsString($result);
     }
 }

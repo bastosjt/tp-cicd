@@ -59,14 +59,17 @@ jobs:
 
           - name: Start Symfony server
             run: |
-              symfony server:start -d
-              sleep 5
+              symfony server:start -d --port=8000
+              for i in {1..10}; do
+                curl -f http://127.0.0.1:8000 && break
+                sleep 3
+              done
 
           - name: Health check
-            run: curl -f http://127.0.0.1:8000 || exit 1
+            run: curl -f http://127.0.0.1:8000
 
           - name: Stop server
-            run: symfony server:stop
+            run: symfony server:stop  
 
     unit-tests:
         name: "Tests Unitaires"
@@ -137,8 +140,11 @@ jobs:
 
           - name: Start Symfony server
             run: |
-              symfony server:start -d
-              sleep 5
+              symfony server:start -d --port=8000
+              for i in {1..10}; do
+                curl -f http://127.0.0.1:8000 && break
+                sleep 3
+              done
 
           - name: Run Cypress
             run: npx cypress run

@@ -58,7 +58,7 @@ jobs:
               echo "$HOME/.symfony/bin" >> $GITHUB_PATH
           
           - name: Check Symfony installation
-            run: symfony -v
+            run: $HOME/.symfony/bin/symfony -v
           
           - name: Start Symfony server
             run: |
@@ -142,7 +142,7 @@ jobs:
               echo "$HOME/.symfony/bin" >> $GITHUB_PATH
           
           - name: Check Symfony installation
-            run: symfony -v
+            run: $HOME/.symfony/bin/symfony -v
           
           - name: Start Symfony server
             run: |
